@@ -82,4 +82,23 @@
   .skills-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
+
+  .skills-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .skills-body {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .skill-card {
+    padding: 1rem 1.1rem;
+  }
 }

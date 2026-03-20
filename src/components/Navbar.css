@@ -87,6 +87,11 @@
   width: 100%;
 }
 
+/* Close button inside mobile drawer (hidden on desktop) */
+.nav-close-item {
+  display: none;
+}
+
 /* Burger (mobile) */
 .nav-burger {
   display: none;
@@ -144,5 +149,35 @@
 
   .nav-links a {
     font-size: 1.1rem;
+  }
+
+  /* Show close button inside drawer */
+  .nav-close-item {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+  }
+
+  .nav-close-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .nav-close-btn:hover {
+    background: var(--accent-glow);
+    color: var(--accent);
+    border-color: var(--accent);
   }
 }

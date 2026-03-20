@@ -12,7 +12,7 @@
   margin-bottom: 3rem;
 }
 
-/* Slider Wrapper + Navigation */
+/* ---- Desktop: Slider Wrapper has buttons on sides ---- */
 .slider-wrapper {
   display: flex;
   align-items: center;
@@ -88,6 +88,14 @@
   color: var(--text-dim);
   font-size: 2.5rem;
   border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.project-thumbnail img,
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .project-thumbnail span {
@@ -130,24 +138,78 @@
   letter-spacing: 0.5px;
 }
 
-/* Responsive */
+/* Mobile nav row (hidden on desktop) */
+.mobile-nav-row {
+  display: none;
+}
+
+/* ============================================================
+   Responsive: Tablet & Mobile (≤ 768px)
+   The nav buttons move to a separate row BELOW the slider so
+   they never steal width from the project cards.
+   Cards become 100% of the slider-track width.
+   ============================================================ */
 @media (max-width: 768px) {
-  .nav-btn {
-    width: 44px;
-    height: 44px;
-    font-size: 1rem;
+  /* Remove side buttons from the flex row */
+  .slider-wrapper {
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
   }
+
+  /* Hide desktop-side nav buttons */
+  .slider-wrapper > .nav-btn {
+    display: none;
+  }
+
+  /* Slider track fills full width */
+  .slider-track {
+    width: 100%;
+    gap: 1rem;
+  }
+
+  /* Each card stretches to exactly the track width */
   .project-card {
-    min-width: 300px;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  /* Show mobile nav row below the slider */
+  .mobile-nav-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+  }
+
+  .mobile-nav-row .nav-btn {
+    width: 46px;
+    height: 46px;
+    font-size: 1rem;
+    display: flex;
+  }
+
+  .projects-header {
+    margin-bottom: 2rem;
+  }
+
+  .project-thumbnail {
+    height: 200px;
   }
 }
 
 @media (max-width: 480px) {
-  .project-card {
-    min-width: 260px;
-  }
   .project-thumbnail {
-    height: 160px;
+    height: 170px;
+  }
+
+  .project-details {
+    padding: 1.2rem;
+  }
+
+  .mobile-nav-row .nav-btn {
+    width: 42px;
+    height: 42px;
   }
 }
-

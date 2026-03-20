@@ -28,6 +28,17 @@ const Navbar = () => {
         </a>
 
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          {/* Close button inside the drawer */}
+          <li className="nav-close-item">
+            <button
+              className="nav-close-btn"
+              aria-label="Close menu"
+              onClick={() => setMenuOpen(false)}
+            >
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+          </li>
+
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -58,4 +69,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

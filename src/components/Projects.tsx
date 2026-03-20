@@ -47,7 +47,7 @@ const Projects = () => {
     if (!sliderRef.current) return;
     const card = sliderRef.current.querySelector('.project-card') as HTMLElement;
     if (!card) return;
-    const scrollAmount = card.offsetWidth + 24; // card width + gap
+    const scrollAmount = card.offsetWidth + 16; // card width + gap
     sliderRef.current.scrollBy({
       left: direction === 'right' ? scrollAmount : -scrollAmount,
       behavior: 'smooth',
@@ -67,6 +67,7 @@ const Projects = () => {
         </div>
 
         <div className="slider-wrapper">
+          {/* Desktop left button */}
           <button
             className="nav-btn nav-btn-left"
             onClick={() => scroll('left')}
@@ -76,11 +77,11 @@ const Projects = () => {
             <i className="fa-solid fa-arrow-left"></i>
           </button>
 
-          <div className="slider-track" ref={sliderRef} onScroll={updateNavVisibility}>
+          <div className="slider-track" ref={sliderRef} onScroll={updateNavVisibility} style={{ touchAction: 'pan-x' }}>
             {projectsData.map((project, index) => (
               <div className="project-card" key={index}>
                 <div className="project-thumbnail">
-                  <img src={project.thumbnail} alt="Project" className="project-thumbnail" />
+                  <img src={project.thumbnail} alt="Project" className="project-img" />
                 </div>
                 <div className="project-details">
                   <h4 className="project-title">{project.title}</h4>
@@ -97,8 +98,29 @@ const Projects = () => {
             ))}
           </div>
 
+          {/* Desktop right button */}
           <button
             className="nav-btn nav-btn-right"
+            onClick={() => scroll('right')}
+            aria-label="Next project"
+            style={{ opacity: showRight ? 1 : 0, pointerEvents: showRight ? 'auto' : 'none' }}
+          >
+            <i className="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        {/* Mobile-only nav row below slider */}
+        <div className="mobile-nav-row">
+          <button
+            className="nav-btn"
+            onClick={() => scroll('left')}
+            aria-label="Previous project"
+            style={{ opacity: showLeft ? 1 : 0, pointerEvents: showLeft ? 'auto' : 'none' }}
+          >
+            <i className="fa-solid fa-arrow-left"></i>
+          </button>
+          <button
+            className="nav-btn"
             onClick={() => scroll('right')}
             aria-label="Next project"
             style={{ opacity: showRight ? 1 : 0, pointerEvents: showRight ? 'auto' : 'none' }}
