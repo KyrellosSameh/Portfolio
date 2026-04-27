@@ -1,0 +1,7 @@
+# Robots.txt — Kyrellos Sameh Portfolio
+# https://kyrellos-portfolio.vercel.app/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://kyrellos-portfolio.vercel.app/sitemap.xml

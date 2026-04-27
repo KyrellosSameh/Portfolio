@@ -1,7 +1,7 @@
 /* ==========================================================================
    Root Variables & Reset
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+/* Google Fonts (Outfit) loaded via <link> in index.html for performance */
 
 :root {
   /* Colors matching Figma design */

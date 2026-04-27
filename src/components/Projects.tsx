@@ -9,6 +9,7 @@ interface Project {
   description: string;
   tags: string[];
   thumbnail?: string;
+  link?: string;
 }
 const projectsData: Project[] = [
   {
@@ -16,18 +17,21 @@ const projectsData: Project[] = [
     description: 'A minimalist personal website focusing on performance, accessibility, and stunning UX design.',
     tags: ['HTML', 'CSS', 'React'],
     thumbnail: p1,
-  },
-  {
-    title: 'Landing Page',
-    description: 'Responsive landing page with smooth scroll animations and a captivating design.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    thumbnail: p2,
+    link: '#',
   },
   {
     title: 'Physics lab simulation',
     description: 'Interactive physics lab simulation for University students and teachers to simulate and experiment with various physical phenomena.',
     tags: ['React', 'JavaScript', 'Physics', 'Simulation'],
     thumbnail: p3,
+    link: 'https://failsafe-lab.vercel.app/',
+  },
+  {
+    title: 'Landing Page',
+    description: 'Responsive landing page with smooth scroll animations and a captivating design.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    thumbnail: p2,
+    link: '#',
   },
 ];
 
@@ -79,22 +83,41 @@ const Projects = () => {
 
           <div className="slider-track" ref={sliderRef} onScroll={updateNavVisibility} style={{ touchAction: 'pan-x' }}>
             {projectsData.map((project, index) => (
-              <div className="project-card" key={index}>
+              <article className="project-card" key={index}>
                 <div className="project-thumbnail">
-                  <img src={project.thumbnail} alt="Project" className="project-img" />
+                  <img
+                    src={project.thumbnail}
+                    alt={`Screenshot of ${project.title}`}
+                    className="project-img"
+                    loading="lazy"
+                    width={600}
+                    height={220}
+                  />
                 </div>
                 <div className="project-details">
-                  <h4 className="project-title">{project.title}</h4>
+                  <h3 className="project-title">{project.title}</h3>
                   <p className="project-desc">{project.description}</p>
-                  <div className="project-tags">
-                    {project.tags.map((tag) => (
-                      <span className="tag" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
+                  <div className="project-bottom">
+                    <div className="project-tags">
+                      {project.tags.map((tag) => (
+                        <span className="tag" key={tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="visit-btn"
+                      >
+                        Visit <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                      </a>
+                    )}
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
 

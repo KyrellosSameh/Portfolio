@@ -21,7 +21,8 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <header>
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav-inner">
         <a href="#home" className="nav-logo">
           Kyrellos<span className="accent">.</span>
@@ -65,6 +66,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    </header>
   );
 };
 

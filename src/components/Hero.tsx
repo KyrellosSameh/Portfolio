@@ -44,7 +44,14 @@ const Hero = () => {
 
         <div className="hero-visual">
           <div className="profile-frame">
-            <img src={myPhoto} alt="Kyrellos Sameh"  className="profile-placeholder"/  >
+            <img
+              src={myPhoto}
+              alt="Kyrellos Sameh — Software Engineer and Frontend Developer"
+              className="profile-placeholder"
+              width={380}
+              height={380}
+              fetchPriority="high"
+            />
             <div className="profile-ring"></div>
           </div>
         </div>
