@@ -19,6 +19,7 @@ const asyncCssPlugin = () => ({
 });
 
 export default defineConfig({
+  base: '/',
   plugins: [
     asyncCssPlugin(),react(), tailwindcss()],
   build: {
