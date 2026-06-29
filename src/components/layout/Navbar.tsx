@@ -14,7 +14,7 @@ export const Navbar: FC = () => {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
-    
+
     if (targetId === 'home' || targetId === '') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       window.history.replaceState(null, '', window.location.pathname);
@@ -30,9 +30,8 @@ export const Navbar: FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/80 dark:bg-[#0B0C10]/80 backdrop-blur-md shadow-none border-b border-slate-200 dark:border-glass-border py-3' : 'bg-transparent border-b border-transparent py-5 shadow-none'
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 dark:bg-[#0B0C10]/80 backdrop-blur-md shadow-none border-b border-slate-200 dark:border-glass-border py-3' : 'bg-transparent border-b border-transparent py-5 shadow-none'
+        }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         {/* Logo */}
@@ -47,7 +46,7 @@ export const Navbar: FC = () => {
 
         {/* Navigation Links */}
         <nav className="hidden md:flex items-center space-x-8" aria-label="Main Navigation">
-          {['Home', 'About', 'Skills', 'Experience', 'Projects', 'Contact'].map((link) => {
+          {['Home', 'About', 'Services', 'Skills', 'Experience', 'Projects', 'Contact'].map((link) => {
             const targetId = link.toLowerCase();
             return (
               <a

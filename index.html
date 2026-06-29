@@ -30,8 +30,23 @@
     <meta property="twitter:title" content="Kyrellos Sameh | Creative Frontend Architect" />
     <meta property="twitter:description" content="Explore the portfolio of Kyrellos Sameh, an elite Frontend Engineer specializing in high-performance React web applications, dynamic cyber-aesthetics, and flawless UI/UX." />
     <meta property="twitter:image" content="https://kyrellos.dev/og-image.webp" />
+
+    <!-- Theme Initialization (Prevents FOUC) -->
+    <script>
+      (function() {
+        try {
+          var localTheme = localStorage.getItem('theme');
+          var sysTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (localTheme === 'dark' || (!localTheme && sysTheme)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body>
+  <body class="bg-slate-50 dark:bg-[#0B0C10] text-slate-900 dark:text-[#06b6d4] transition-colors duration-300">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
