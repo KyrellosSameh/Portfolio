@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-cyber-bg: #0b0c10;
+  --color-cyber-cyan: #06b6d4;
+  --color-cyber-violet: #8b5cf6;
+  --color-cyber-mint: #10b981;
+  --color-glass-surface: rgba(11, 12, 16, 0.6);
+  --color-glass-border: rgba(30, 41, 59, 0.5); /* border-slate-800/50 */
+}
+
+@layer utilities {
+  .text-shadow-cyan {
+    text-shadow: none;
+  }
+  .dark .text-shadow-cyan {
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.15);
+  }
+  .text-shadow-violet {
+    text-shadow: none;
+  }
+  .dark .text-shadow-violet {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.15);
+  }
+  .glass-card {
+    @apply bg-white border border-slate-200 shadow-none dark:bg-glass-surface dark:backdrop-blur-md dark:border-glass-border dark:shadow-none;
+  }
+  .skill-card-dynamic:hover {
+    border-color: var(--skill-color) !important;
+    box-shadow: 0 0 15px var(--skill-glow), inset 0 0 10px var(--skill-glow) !important;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 dark:bg-cyber-bg dark:text-cyber-cyan transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .container {
+    max-width: 1280px !important;
+  }
+}
