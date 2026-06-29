@@ -37,10 +37,17 @@
         try {
           var localTheme = localStorage.getItem('theme');
           var sysTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (localTheme === 'dark' || (!localTheme && sysTheme)) {
-            document.documentElement.classList.add('dark');
+          var isDark = localTheme === 'dark' || (!localTheme && sysTheme);
+          var html = document.documentElement;
+          
+          if (isDark) {
+            html.classList.add('dark');
+            html.style.backgroundColor = '#0B0C10';
+            html.style.color = '#06b6d4';
           } else {
-            document.documentElement.classList.remove('dark');
+            html.classList.remove('dark');
+            html.style.backgroundColor = '#f8fafc';
+            html.style.color = '#0f172a';
           }
         } catch (e) {}
       })();
