@@ -12,6 +12,22 @@ export const Navbar: FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    
+    if (targetId === 'home' || targetId === '') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.replaceState(null, '', window.location.pathname);
+      return;
+    }
+
+    const section = document.getElementById(targetId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      window.history.replaceState(null, '', `#${targetId}`);
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -22,6 +38,7 @@ export const Navbar: FC = () => {
         {/* Logo */}
         <a
           href="#"
+          onClick={(e) => handleNavClick(e, '')}
           className="text-2xl font-bold tracking-tighter text-slate-900 dark:text-white transition-colors"
           aria-label="Home"
         >
@@ -30,15 +47,19 @@ export const Navbar: FC = () => {
 
         {/* Navigation Links */}
         <nav className="hidden md:flex items-center space-x-8" aria-label="Main Navigation">
-          {['Home', 'About', 'Skills', 'Experience', 'Projects', 'Contact'].map((link) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
-              className="text-slate-600 hover:text-cyan-800 dark:text-gray-300 dark:hover:text-cyber-cyan dark:hover: transition-all duration-300 text-sm font-medium tracking-wide uppercase"
-            >
-              {link}
-            </a>
-          ))}
+          {['Home', 'About', 'Skills', 'Experience', 'Projects', 'Contact'].map((link) => {
+            const targetId = link.toLowerCase();
+            return (
+              <a
+                key={link}
+                href={`#${targetId}`}
+                onClick={(e) => handleNavClick(e, targetId)}
+                className="text-slate-600 hover:text-cyan-800 dark:text-gray-300 dark:hover:text-cyber-cyan dark:hover: transition-all duration-300 text-sm font-medium tracking-wide uppercase"
+              >
+                {link}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Right Actions */}
